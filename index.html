@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DevStudio - Web Development Agency</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>DevStudio - 3D Portfolio with Firebase Backend</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
@@ -29,17 +29,37 @@
             font-family: 'Inter', sans-serif;
             line-height: 1.6;
             color: var(--dark);
+            overflow-x: hidden;
+        }
+
+        /* 3D Canvas Background */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        canvas {
+            display: block;
+            vertical-align: bottom;
         }
 
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
+            position: relative;
+            z-index: 1;
         }
 
         /* Navigation */
         .navbar {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             position: fixed;
             width: 100%;
@@ -55,7 +75,9 @@
         }
 
         .nav-brand h1 {
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             font-size: 1.5rem;
         }
 
@@ -65,6 +87,7 @@
             margin-left: 2rem;
             transition: color 0.3s;
             cursor: pointer;
+            font-weight: 500;
         }
 
         .nav-menu a:hover,
@@ -78,11 +101,14 @@
             cursor: pointer;
         }
 
-        /* Hero Section */
+        /* Hero Section with 3D */
         .hero {
             padding: 120px 0 80px;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
         }
 
         .hero .container {
@@ -96,10 +122,13 @@
             font-size: 3rem;
             margin-bottom: 1rem;
             line-height: 1.2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
         }
 
         .highlight {
-            color: #FFD700;
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-buttons {
@@ -126,6 +155,7 @@
         .btn-primary:hover {
             background: var(--primary-dark);
             transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(79, 70, 229, 0.4);
         }
 
         .btn-secondary {
@@ -138,6 +168,7 @@
         .btn-secondary:hover {
             background: white;
             color: var(--primary);
+            transform: translateY(-2px);
         }
 
         .btn-block {
@@ -147,7 +178,8 @@
         /* Services Section */
         .services {
             padding: 80px 0;
-            background: var(--light);
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         .section-header {
@@ -158,6 +190,9 @@
         .section-header h2 {
             font-size: 2.5rem;
             margin-bottom: 1rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .services-grid {
@@ -171,23 +206,28 @@
             padding: 2rem;
             border-radius: 10px;
             text-align: center;
-            transition: transform 0.3s;
+            transition: all 0.3s;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
         .service-card:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .service-card i {
             font-size: 3rem;
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 1rem;
         }
 
         /* Contact Section */
         .contact {
             padding: 80px 0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         .contact-form-container {
@@ -208,12 +248,14 @@
             border-radius: 5px;
             font-family: inherit;
             font-size: 1rem;
+            transition: all 0.3s;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
         }
 
         /* Auth Forms */
@@ -222,17 +264,17 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             padding-top: 80px;
         }
 
         .auth-card {
-            background: white;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
             border-radius: 10px;
             padding: 2rem;
             width: 100%;
             max-width: 450px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
         }
 
         .auth-tabs {
@@ -250,6 +292,7 @@
             cursor: pointer;
             color: var(--dark);
             transition: all 0.3s;
+            font-weight: 500;
         }
 
         .tab-btn.active {
@@ -274,7 +317,8 @@
         .dashboard-container {
             padding-top: 100px;
             min-height: 100vh;
-            background: var(--light);
+            background: rgba(243, 244, 246, 0.95);
+            backdrop-filter: blur(10px);
         }
 
         .dashboard-header {
@@ -299,11 +343,18 @@
             align-items: center;
             gap: 1rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-3px);
         }
 
         .stat-card i {
             font-size: 2.5rem;
-            color: var(--primary);
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat-info h3 {
@@ -330,12 +381,12 @@
             border-radius: 10px;
             padding: 1.5rem;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
 
         .project-card:hover {
             transform: translateY(-3px);
-            box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
         }
 
         .project-status {
@@ -372,6 +423,7 @@
             width: 100%;
             height: 100%;
             background: rgba(0,0,0,0.5);
+            backdrop-filter: blur(5px);
         }
 
         .modal-content {
@@ -382,6 +434,18 @@
             max-width: 500px;
             border-radius: 10px;
             position: relative;
+            animation: slideDown 0.3s ease;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
 
         .close {
@@ -390,6 +454,11 @@
             top: 1rem;
             font-size: 1.5rem;
             cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .close:hover {
+            color: var(--danger);
         }
 
         /* Alerts */
@@ -414,9 +483,12 @@
 
         /* Footer */
         footer {
-            background: var(--dark);
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
             color: white;
             padding: 3rem 0 1rem;
+            position: relative;
+            z-index: 1;
         }
 
         .footer-content {
@@ -432,6 +504,7 @@
             display: block;
             margin-bottom: 0.5rem;
             cursor: pointer;
+            transition: color 0.3s;
         }
 
         .footer-section a:hover {
@@ -444,7 +517,7 @@
             border-top: 1px solid #444;
         }
 
-        /* Portfolio Page Styles */
+        /* Portfolio Grid */
         .portfolio-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -457,11 +530,12 @@
             border-radius: 10px;
             overflow: hidden;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            transition: all 0.3s;
         }
 
         .portfolio-item:hover {
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
         .portfolio-item img {
@@ -474,7 +548,7 @@
             padding: 1.5rem;
         }
 
-        /* Responsive Design */
+        /* Responsive */
         @media (max-width: 768px) {
             .menu-toggle {
                 display: block;
@@ -534,6 +608,8 @@
     </style>
 </head>
 <body>
+    <div id="canvas-container"></div>
+
     <!-- Navigation -->
     <nav class="navbar">
         <div class="container">
@@ -559,14 +635,15 @@
             <div class="container">
                 <div class="hero-content">
                     <h1>Transform Your Business With <span class="highlight">Modern Web Solutions</span></h1>
-                    <p>We build fast, responsive, and scalable websites that drive results. Let's bring your vision to life.</p>
+                    <p style="font-size: 1.2rem;">We build fast, responsive, and scalable websites that drive results. Let's bring your vision to life.</p>
                     <div class="hero-buttons">
                         <a onclick="showPage('contact')" class="btn btn-primary">Get Started</a>
                         <a onclick="showPage('portfolio')" class="btn btn-secondary">View Portfolio</a>
                     </div>
                 </div>
                 <div class="hero-image">
-                    <img src="https://via.placeholder.com/500x400/4F46E5/ffffff?text=Web+Development" alt="Hero Image" style="max-width: 100%; border-radius: 10px;">
+                    <!-- 3D Photo will be inserted here by Three.js -->
+                    <div id="photo-3d-container" style="width: 100%; height: 400px;"></div>
                 </div>
             </div>
         </section>
@@ -730,7 +807,7 @@
             </div>
         </section>
 
-        <section class="services" style="background: white;">
+        <section class="services" style="background: rgba(255, 255, 255, 0.95);">
             <div class="container">
                 <div class="portfolio-grid">
                     <div class="portfolio-item">
@@ -824,7 +901,261 @@
         </div>
     </footer>
 
-    <!-- Firebase SDK -->
+    <!-- Three.js Library -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
+
+    <script type="module">
+        import * as THREE from 'three';
+
+        // 3D Photo Setup - Auto-detects bk.png
+        const container = document.getElementById('canvas-container');
+        const photoContainer = document.getElementById('photo-3d-container');
+        
+        // Scene setup
+        const scene = new THREE.Scene();
+        scene.background = null; // Transparent background
+        scene.fog = new THREE.FogExp2(0x000000, 0.002);
+        
+        // Camera setup
+        const camera = new THREE.PerspectiveCamera(45, 1, 0.1, 1000);
+        camera.position.set(0, 0, 5);
+        
+        // Renderer setup
+        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setClearColor(0x000000, 0); // Transparent
+        container.appendChild(renderer.domElement);
+        
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.6);
+        scene.add(ambientLight);
+        
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(1, 2, 1);
+        scene.add(directionalLight);
+        
+        const backLight = new THREE.PointLight(0x4F46E5, 0.5);
+        backLight.position.set(0, 0, -2);
+        scene.add(backLight);
+        
+        const fillLight = new THREE.PointLight(0x10B981, 0.3);
+        fillLight.position.set(1, 1, 1);
+        scene.add(fillLight);
+        
+        // Particle background
+        const particleCount = 1500;
+        const particlesGeometry = new THREE.BufferGeometry();
+        const particlesPositions = new Float32Array(particleCount * 3);
+        
+        for (let i = 0; i < particleCount; i++) {
+            particlesPositions[i * 3] = (Math.random() - 0.5) * 200;
+            particlesPositions[i * 3 + 1] = (Math.random() - 0.5) * 100;
+            particlesPositions[i * 3 + 2] = (Math.random() - 0.5) * 50 - 20;
+        }
+        
+        particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlesPositions, 3));
+        const particlesMaterial = new THREE.PointsMaterial({
+            color: 0x4F46E5,
+            size: 0.1,
+            transparent: true,
+            opacity: 0.6
+        });
+        
+        const particlesSystem = new THREE.Points(particlesGeometry, particlesMaterial);
+        scene.add(particlesSystem);
+        
+        // Create 3D Photo Frame
+        let photoMesh;
+        let photoTexture;
+        
+        // Try to load the photo
+        const photoUrl = 'bk.png';
+        const textureLoader = new THREE.TextureLoader();
+        
+        textureLoader.load(photoUrl, 
+            (texture) => {
+                // Success - photo loaded
+                photoTexture = texture;
+                createPhotoFrame(texture);
+            },
+            undefined,
+            (error) => {
+                console.error('Error loading photo:', error);
+                // Fallback - create a colorful gradient texture
+                const canvas = document.createElement('canvas');
+                canvas.width = 512;
+                canvas.height = 512;
+                const ctx = canvas.getContext('2d');
+                
+                // Create gradient background
+                const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+                gradient.addColorStop(0, '#4F46E5');
+                gradient.addColorStop(1, '#10B981');
+                ctx.fillStyle = gradient;
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                
+                // Add text
+                ctx.fillStyle = 'white';
+                ctx.font = 'Bold 40px Inter';
+                ctx.textAlign = 'center';
+                ctx.fillText('Your Photo', canvas.width/2, canvas.height/2);
+                ctx.font = '20px Inter';
+                ctx.fillText('bk.png', canvas.width/2, canvas.height/2 + 50);
+                
+                const fallbackTexture = new THREE.CanvasTexture(canvas);
+                createPhotoFrame(fallbackTexture);
+            }
+        );
+        
+        function createPhotoFrame(texture) {
+            // Create a 3D box geometry for photo frame
+            const geometry = new THREE.BoxGeometry(2, 2.5, 0.1);
+            const material = new THREE.MeshStandardMaterial({
+                map: texture,
+                metalness: 0.3,
+                roughness: 0.2,
+                emissive: 0x4F46E5,
+                emissiveIntensity: 0.2
+            });
+            
+            photoMesh = new THREE.Mesh(geometry, material);
+            scene.add(photoMesh);
+            
+            // Add a glowing outline
+            const edges = new THREE.EdgesGeometry(geometry);
+            const outline = new THREE.LineSegments(edges, new THREE.LineBasicMaterial({ color: 0x4F46E5 }));
+            photoMesh.add(outline);
+            
+            // Add floating particles around photo
+            const particleCount = 300;
+            const particleGeometry = new THREE.BufferGeometry();
+            const particlePositions = new Float32Array(particleCount * 3);
+            
+            for (let i = 0; i < particleCount; i++) {
+                particlePositions[i * 3] = (Math.random() - 0.5) * 3;
+                particlePositions[i * 3 + 1] = (Math.random() - 0.5) * 3.5;
+                particlePositions[i * 3 + 2] = (Math.random() - 0.5) * 1.5;
+            }
+            
+            particleGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
+            const particleMaterial = new THREE.PointsMaterial({
+                color: 0x4F46E5,
+                size: 0.02,
+                transparent: true,
+                opacity: 0.8
+            });
+            
+            const particles = new THREE.Points(particleGeometry, particleMaterial);
+            photoMesh.add(particles);
+        }
+        
+        // Animation variables
+        let time = 0;
+        let rotationSpeed = 0.005;
+        let floatOffset = 0;
+        
+        // Animation loop
+        function animate() {
+            requestAnimationFrame(animate);
+            
+            time += 0.01;
+            floatOffset = Math.sin(time) * 0.05;
+            
+            if (photoMesh) {
+                // Smooth 3D rotation
+                photoMesh.rotation.y = Math.sin(time * 0.3) * 0.5;
+                photoMesh.rotation.x = Math.sin(time * 0.2) * 0.2;
+                photoMesh.rotation.z = Math.sin(time * 0.1) * 0.1;
+                
+                // Floating motion
+                photoMesh.position.y = floatOffset;
+                
+                // Pulse effect
+                const scale = 1 + Math.sin(time * 2) * 0.02;
+                photoMesh.scale.set(scale, scale, scale);
+            }
+            
+            // Rotate particles background
+            particlesSystem.rotation.y = time * 0.05;
+            particlesSystem.rotation.x = time * 0.03;
+            
+            // Update camera position for smooth effect
+            camera.position.x = Math.sin(time * 0.2) * 0.1;
+            camera.position.y = Math.cos(time * 0.15) * 0.1;
+            camera.lookAt(0, 0, 0);
+            
+            renderer.render(scene, camera);
+        }
+        
+        animate();
+        
+        // Handle window resize
+        window.addEventListener('resize', onWindowResize, false);
+        function onWindowResize() {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        }
+        
+        // Also create a 3D photo in the hero section if container exists
+        if (photoContainer) {
+            const heroScene = new THREE.Scene();
+            const heroCamera = new THREE.PerspectiveCamera(45, 1, 0.1, 10);
+            heroCamera.position.set(0, 0, 3);
+            
+            const heroRenderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+            heroRenderer.setSize(photoContainer.clientWidth, photoContainer.clientHeight);
+            heroRenderer.setClearColor(0x000000, 0);
+            photoContainer.appendChild(heroRenderer.domElement);
+            
+            const heroLight = new THREE.AmbientLight(0xffffff, 0.7);
+            heroScene.add(heroLight);
+            
+            const heroDirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+            heroDirLight.position.set(1, 1, 1);
+            heroScene.add(heroDirLight);
+            
+            // Load photo for hero section
+            textureLoader.load(photoUrl,
+                (texture) => {
+                    const heroGeo = new THREE.BoxGeometry(1.8, 2.3, 0.1);
+                    const heroMat = new THREE.MeshStandardMaterial({ map: texture, metalness: 0.4, roughness: 0.1 });
+                    const heroMesh = new THREE.Mesh(heroGeo, heroMat);
+                    heroScene.add(heroMesh);
+                    
+                    let heroTime = 0;
+                    function animateHero() {
+                        requestAnimationFrame(animateHero);
+                        heroTime += 0.02;
+                        heroMesh.rotation.y = Math.sin(heroTime * 0.5) * 0.3;
+                        heroMesh.rotation.x = Math.sin(heroTime * 0.3) * 0.2;
+                        heroMesh.position.y = Math.sin(heroTime) * 0.05;
+                        
+                        heroRenderer.render(heroScene, heroCamera);
+                    }
+                    animateHero();
+                },
+                undefined,
+                () => {
+                    console.log('Hero photo loading...');
+                }
+            );
+            
+            window.addEventListener('resize', () => {
+                heroRenderer.setSize(photoContainer.clientWidth, photoContainer.clientHeight);
+            });
+        }
+        
+        // Make Three.js available globally
+        window.threeInitialized = true;
+    </script>
+
     <script type="module">
         // Import Firebase modules
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.0/firebase-app.js";
@@ -970,7 +1301,6 @@
             
             document.getElementById('userName').textContent = currentUser.displayName || currentUser.email;
             
-            // Set up real-time listener for projects
             if (projectsUnsubscribe) {
                 projectsUnsubscribe();
             }
@@ -1011,7 +1341,6 @@
                         <p><strong>Type:</strong> ${project.type}</p>
                         <p><strong>Budget:</strong> $${project.budget}</p>
                         <p><strong>Deadline:</strong> ${project.deadline}</p>
-                        <p><strong>Submitted:</strong> ${project.createdAt?.toDate ? new Date(project.createdAt.toDate()).toLocaleDateString() : 'Just now'}</p>
                     </div>
                 </div>
             `).join('');
@@ -1035,7 +1364,6 @@
         
         window.closeProjectModal = () => {
             document.getElementById('projectModal').style.display = 'none';
-            document.getElementById('projectForm')?.reset();
         };
 
         // Submit project
@@ -1096,7 +1424,7 @@
             }
         });
 
-        // Escape HTML to prevent XSS
+        // Escape HTML
         function escapeHtml(str) {
             if (!str) return '';
             return str.replace(/[&<>]/g, function(m) {
@@ -1116,14 +1444,6 @@
                 loadDashboard();
             }
         });
-
-        // Close modal when clicking outside
-        window.onclick = (event) => {
-            const modal = document.getElementById('projectModal');
-            if (event.target === modal) {
-                closeProjectModal();
-            }
-        };
     </script>
 </body>
 </html>
