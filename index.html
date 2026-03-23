@@ -2,10 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
-    <title>Raj Bittu | 3D Portfolio</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raj Bittu | Portfolio</title>
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -16,300 +16,234 @@
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            overflow: hidden;
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
             color: #fff;
-        }
-
-        /* Canvas for 3D background */
-        #canvas-container {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-        }
-
-        /* Content overlay - sits above 3D scene */
-        .content {
-            position: relative;
-            z-index: 10;
+            line-height: 1.6;
             min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            backdrop-filter: blur(2px);
         }
 
         .container {
-            max-width: 1300px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 0 40px;
-            width: 100%;
+            padding: 0 5%;
         }
 
-        /* ========== NAVIGATION ========== */
+        /* Navigation */
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 28px 0 20px 0;
+            padding: 30px 0;
             flex-wrap: wrap;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            backdrop-filter: blur(5px);
         }
 
         .logo {
-            font-size: 1.9rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #ffffff, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
+            font-size: 28px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #fff;
         }
 
         .nav-links {
             display: flex;
-            gap: 2.2rem;
+            gap: 35px;
             list-style: none;
-            font-weight: 500;
         }
 
         .nav-links li a {
             text-decoration: none;
-            color: #f0f0f0;
-            font-size: 1rem;
-            transition: 0.3s;
+            color: #fff;
             font-weight: 500;
-            text-shadow: 0 0 5px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            font-size: 16px;
         }
 
         .nav-links li a:hover {
-            color: #a855f7;
+            color: #6c63ff;
         }
 
-        /* ========== HERO SECTION ========== */
+        /* Hero Section */
         .hero {
             display: flex;
             align-items: center;
             justify-content: space-between;
-            gap: 2rem;
-            padding: 60px 0 80px 0;
+            gap: 50px;
+            padding: 50px 0 80px;
             flex-wrap: wrap;
         }
 
         .hero-content {
-            flex: 1.2;
-            min-width: 280px;
-            backdrop-filter: blur(10px);
-            background: rgba(0,0,0,0.3);
-            border-radius: 32px;
-            padding: 30px;
-            border: 1px solid rgba(255,255,255,0.15);
+            flex: 1;
+            min-width: 300px;
         }
 
-        .hero-content .greeting {
-            font-size: 1.3rem;
+        .greeting {
+            font-size: 22px;
             font-weight: 500;
-            color: #e0e0ff;
-            margin-bottom: 0.75rem;
+            margin-bottom: 15px;
+            color: #e4e4e4;
         }
 
         .hero-content h1 {
-            font-size: 3.7rem;
-            font-weight: 800;
-            line-height: 1.2;
-            margin: 0.5rem 0 0.5rem 0;
-            background: linear-gradient(to right, #ffffff, #c084fc);
+            font-size: 56px;
+            font-weight: 700;
+            margin: 10px 0;
+            background: linear-gradient(135deg, #fff, #a29bfe);
             -webkit-background-clip: text;
             background-clip: text;
             color: transparent;
         }
 
-        .hero-content .dynamic-role {
-            font-size: 2rem;
+        .role {
+            font-size: 32px;
             font-weight: 600;
-            margin: 0.5rem 0 1rem 0;
-            color: #ffffff;
+            margin: 15px 0 20px;
         }
 
-        .dynamic-role span {
-            color: #c084fc;
-            border-bottom: 3px solid #c084fc;
-            display: inline-block;
-            text-shadow: 0 0 10px rgba(192,132,252,0.5);
+        .role span {
+            color: #6c63ff;
+            border-bottom: 3px solid #6c63ff;
         }
 
         .description {
-            font-size: 1rem;
-            color: #e2e8f0;
-            line-height: 1.6;
-            max-width: 520px;
-            margin: 1.2rem 0 2rem 0;
+            color: #b8b8b8;
+            margin: 20px 0 35px;
+            line-height: 1.7;
+            max-width: 500px;
         }
 
         .download-btn {
             display: inline-flex;
             align-items: center;
             gap: 12px;
-            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
-            color: white;
-            border: none;
-            padding: 14px 34px;
-            font-size: 1rem;
-            font-weight: 600;
+            background: #6c63ff;
+            color: #fff;
+            padding: 12px 32px;
             border-radius: 40px;
-            cursor: pointer;
-            transition: all 0.25s ease;
-            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
             text-decoration: none;
-            backdrop-filter: blur(5px);
-        }
-
-        .download-btn i {
-            font-size: 1.1rem;
+            font-weight: 600;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
         }
 
         .download-btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 15px 30px rgba(139, 92, 246, 0.6);
-            background: linear-gradient(135deg, #9b6cf7, #7c3aed);
+            background: #5a52e0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(108, 99, 255, 0.4);
         }
 
-        /* 3D Photo Container - with 3D flip/rotate effect */
-        .hero-image {
-            flex: 0.8;
+        /* Photo Section with 3D effect */
+        .hero-photo {
+            flex: 1;
             display: flex;
             justify-content: center;
             align-items: center;
+            min-width: 300px;
+        }
+
+        .photo-container {
             perspective: 1000px;
         }
 
-        .img-3d-card {
-            position: relative;
-            width: 100%;
-            max-width: 360px;
+        .photo-card {
+            width: 320px;
+            height: 320px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.3);
+            transition: transform 0.4s ease;
             transform-style: preserve-3d;
-            animation: floatGlow 4s ease-in-out infinite;
             cursor: pointer;
-            transition: transform 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
         }
 
-        .img-3d-card:hover {
+        .photo-card:hover {
             transform: rotateY(8deg) rotateX(5deg) scale(1.02);
+            box-shadow: 0 25px 40px rgba(0, 0, 0, 0.4);
         }
 
-        .img-wrapper {
-            background: linear-gradient(135deg, rgba(139,92,246,0.4), rgba(45,45,80,0.7));
-            border-radius: 32px;
-            padding: 8px;
-            box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5), 0 0 20px rgba(139,92,246,0.3);
-            backdrop-filter: blur(8px);
-            border: 1px solid rgba(255,255,255,0.3);
-            transform: translateZ(20px);
-        }
-
-        .img-wrapper img {
+        .photo-card img {
             width: 100%;
-            max-width: 340px;
-            height: auto;
-            border-radius: 28px;
+            height: 100%;
             object-fit: cover;
             display: block;
-            aspect-ratio: 1 / 1;
-            background: #1e1e2f;
-            box-shadow: inset 0 0 10px rgba(0,0,0,0.2);
         }
-
-        /* floating animation */
-        @keyframes floatGlow {
-            0% {
-                transform: translateY(0px) rotateY(0deg);
-            }
-            50% {
-                transform: translateY(-12px) rotateY(3deg);
-            }
-            100% {
-                transform: translateY(0px) rotateY(0deg);
-            }
-        }
-
-        /* 3d particles or floating orbs - handled by three.js */
 
         /* Responsive */
-        @media (max-width: 900px) {
-            .container {
-                padding: 0 28px;
-            }
+        @media (max-width: 968px) {
             .hero {
                 flex-direction: column-reverse;
                 text-align: center;
                 padding: 30px 0 60px;
             }
+            
             .hero-content {
                 text-align: center;
-                backdrop-filter: blur(12px);
-                margin: 0 10px;
             }
+            
             .description {
                 margin-left: auto;
                 margin-right: auto;
             }
+            
             .hero-content h1 {
-                font-size: 2.8rem;
+                font-size: 42px;
             }
-            .dynamic-role {
-                font-size: 1.6rem;
+            
+            .role {
+                font-size: 26px;
             }
-            .nav-links {
-                gap: 1.5rem;
-            }
-            .img-wrapper img {
-                max-width: 280px;
+            
+            .photo-card {
+                width: 280px;
+                height: 280px;
             }
         }
 
-        @media (max-width: 550px) {
+        @media (max-width: 768px) {
             nav {
                 flex-direction: column;
-                gap: 15px;
+                gap: 20px;
+                text-align: center;
             }
+            
+            .nav-links {
+                gap: 25px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
             .hero-content h1 {
-                font-size: 2.2rem;
+                font-size: 36px;
             }
-            .dynamic-role {
-                font-size: 1.3rem;
+            
+            .role {
+                font-size: 22px;
             }
-            .download-btn {
-                padding: 12px 26px;
+            
+            .greeting {
+                font-size: 18px;
             }
         }
 
-        .credit {
-            text-align: center;
-            padding: 28px 0 32px;
-            font-size: 0.85rem;
-            color: #cbd5e6;
-            backdrop-filter: blur(5px);
-            text-shadow: 0 0 5px black;
-        }
-        
-        hr {
-            border: none;
-            height: 1px;
-            background: rgba(255,255,255,0.15);
-            margin-top: 20px;
+        @media (max-width: 480px) {
+            .photo-card {
+                width: 260px;
+                height: 260px;
+            }
+            
+            .download-btn {
+                padding: 10px 28px;
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-
-<div id="canvas-container"></div>
-
-<div class="content">
     <div class="container">
-        <!-- Navigation -->
+        <!-- Navigation exactly as in reference -->
         <nav>
             <div class="logo">Portfolio.</div>
             <ul class="nav-links">
@@ -321,274 +255,27 @@
             </ul>
         </nav>
 
-        <!-- Hero Section -->
+        <!-- Hero Section matching reference layout -->
         <div class="hero">
             <div class="hero-content">
                 <div class="greeting">Hello, It's Me</div>
                 <h1>Raj Bittu</h1>
-                <div class="dynamic-role">And I'm a <span>Frontend Developer</span></div>
+                <div class="role">And I'm a <span>Frontend Developer</span></div>
                 <p class="description">
-                    Graduate in Computer Science Engineering (2024). I craft immersive 3D web experiences,
-                    blending creativity with modern tech. Passionate about interactive design and cutting-edge animations.
-                    Let's build something extraordinary.
+                    Graduate in Computer Science Engineering (2024). Passionate about creating beautiful, responsive web applications with modern technologies. Dedicated to writing clean, efficient code and delivering exceptional user experiences.
                 </p>
                 <a href="#" class="download-btn" download="Raj_Bittu_CV.pdf">
                     <i class="fas fa-download"></i> Download CV
                 </a>
             </div>
-            <div class="hero-image">
-                <div class="img-3d-card">
-                    <div class="img-wrapper">
-                        <!-- photo file: bk.png -->
+            <div class="hero-photo">
+                <div class="photo-container">
+                    <div class="photo-card">
                         <img src="bk.png" alt="Raj Bittu - Computer Science Engineer 2024">
                     </div>
                 </div>
             </div>
         </div>
-        
-        <hr>
-        <div class="credit">
-            <span>🌟 3D Interactive Experience | Computer Science Engineer (2024) | Built with Three.js 🌟</span>
-        </div>
     </div>
-</div>
-
-<!-- Three.js Library and custom 3D Scene -->
-<script type="importmap">
-    {
-        "imports": {
-            "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
-        }
-    }
-</script>
-
-<script type="module">
-    import * as THREE from 'three';
-
-    // --- Setup Scene, Camera, Renderer ---
-    const container = document.getElementById('canvas-container');
-    const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x050510); // deep space dark blue/purple
-    scene.fog = new THREE.FogExp2(0x050510, 0.008); // subtle fog for depth
-
-    // Camera: perspective with nice field of view
-    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.set(0, 2, 8);
-    camera.lookAt(0, 0, 0);
-
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setPixelRatio(window.devicePixelRatio);
-    renderer.shadowMap.enabled = true; // enable shadows for depth
-    container.appendChild(renderer.domElement);
-
-    // --- Lighting System for dramatic 3D look ---
-    
-    // Ambient light
-    const ambientLight = new THREE.AmbientLight(0x404060);
-    scene.add(ambientLight);
-    
-    // Main directional light
-    const mainLight = new THREE.DirectionalLight(0xffffff, 1);
-    mainLight.position.set(5, 10, 7);
-    mainLight.castShadow = true;
-    mainLight.receiveShadow = false;
-    mainLight.shadow.mapSize.width = 1024;
-    mainLight.shadow.mapSize.height = 1024;
-    scene.add(mainLight);
-    
-    // Fill light from below (rim)
-    const fillLight = new THREE.PointLight(0x8b5cf6, 0.5);
-    fillLight.position.set(0, -2, 2);
-    scene.add(fillLight);
-    
-    // Back rim light
-    const backLight = new THREE.PointLight(0xff66cc, 0.4);
-    backLight.position.set(-2, 3, -5);
-    scene.add(backLight);
-    
-    // Warm fill from side
-    const warmLight = new THREE.PointLight(0xffaa66, 0.35);
-    warmLight.position.set(3, 1, 4);
-    scene.add(warmLight);
-    
-    // Dynamic colored lights that rotate slowly (adds magic)
-    const colorLight1 = new THREE.PointLight(0x44aaff, 0.6);
-    colorLight1.position.set(3, 2, 4);
-    scene.add(colorLight1);
-    
-    const colorLight2 = new THREE.PointLight(0xff44aa, 0.5);
-    colorLight2.position.set(-3, 1, 5);
-    scene.add(colorLight2);
-    
-    // --- 3D Objects: Floating geometric shapes to enhance 3d effect ---
-    
-    // 1. Central glowing torus knot (abstract)
-    const knotGeometry = new THREE.TorusKnotGeometry(0.9, 0.22, 180, 24, 3, 4);
-    const knotMaterial = new THREE.MeshStandardMaterial({ color: 0x9b6df9, emissive: 0x3a0ca3, emissiveIntensity: 0.5, metalness: 0.7, roughness: 0.3 });
-    const torusKnot = new THREE.Mesh(knotGeometry, knotMaterial);
-    torusKnot.position.set(0, -0.5, -2.5);
-    torusKnot.castShadow = true;
-    scene.add(torusKnot);
-    
-    // 2. Floating particles (starfield effect)
-    const particleCount = 1200;
-    const particlesGeometry = new THREE.BufferGeometry();
-    const particlePositions = new Float32Array(particleCount * 3);
-    for (let i = 0; i < particleCount; i++) {
-        particlePositions[i*3] = (Math.random() - 0.5) * 60;
-        particlePositions[i*3+1] = (Math.random() - 0.5) * 30;
-        particlePositions[i*3+2] = (Math.random() - 0.5) * 30 - 15;
-    }
-    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(particlePositions, 3));
-    const particlesMaterial = new THREE.PointsMaterial({ color: 0xccaaee, size: 0.07, transparent: true, opacity: 0.6 });
-    const particleSystem = new THREE.Points(particlesGeometry, particlesMaterial);
-    scene.add(particleSystem);
-    
-    // 3. Floating glowing orbs / spheres around scene
-    const orbGroup = [];
-    const orbColors = [0xff66cc, 0x66ffcc, 0xffaa44, 0xaa88ff, 0x44ddff];
-    for (let i = 0; i < 35; i++) {
-        const size = 0.08 + Math.random() * 0.12;
-        const orbMat = new THREE.MeshStandardMaterial({ color: orbColors[Math.floor(Math.random() * orbColors.length)], emissive: 0x442266, emissiveIntensity: 0.4 });
-        const sphere = new THREE.Mesh(new THREE.SphereGeometry(size, 16, 16), orbMat);
-        sphere.userData = {
-            speedX: (Math.random() - 0.5) * 0.008,
-            speedY: (Math.random() - 0.5) * 0.008,
-            speedZ: (Math.random() - 0.5) * 0.005,
-            radius: 3 + Math.random() * 4,
-            angleX: Math.random() * Math.PI * 2,
-            angleY: Math.random() * Math.PI * 2
-        };
-        // initial random positions
-        sphere.position.x = (Math.random() - 0.5) * 7;
-        sphere.position.y = (Math.random() - 0.5) * 5;
-        sphere.position.z = (Math.random() - 0.5) * 6 - 3;
-        scene.add(sphere);
-        orbGroup.push(sphere);
-    }
-    
-    // 4. A glowing ring (circle) behind the main content area
-    const ringGeometry = new THREE.TorusGeometry(1.4, 0.05, 64, 300);
-    const ringMaterial = new THREE.MeshStandardMaterial({ color: 0xc084fc, emissive: 0x6d28d9, emissiveIntensity: 0.7 });
-    const ring = new THREE.Mesh(ringGeometry, ringMaterial);
-    ring.position.set(0, 0.5, -3.2);
-    ring.rotation.x = Math.PI / 2.5;
-    ring.rotation.z = Math.PI / 4;
-    scene.add(ring);
-    
-    const ring2Geometry = new THREE.TorusGeometry(1.8, 0.03, 64, 300);
-    const ring2Material = new THREE.MeshStandardMaterial({ color: 0xff88cc, emissive: 0xaa44aa, emissiveIntensity: 0.5 });
-    const ring2 = new THREE.Mesh(ring2Geometry, ring2Material);
-    ring2.position.set(0, -0.2, -3.5);
-    ring2.rotation.x = Math.PI / 2;
-    ring2.rotation.z = -Math.PI / 6;
-    scene.add(ring2);
-    
-    // Additional small cubes rotating
-    const cubeGroup = [];
-    for (let i = 0; i < 50; i++) {
-        const cubeGeo = new THREE.BoxGeometry(0.09, 0.09, 0.09);
-        const cubeMat = new THREE.MeshStandardMaterial({ color: 0xaa88ff, emissive: 0x330066 });
-        const cube = new THREE.Mesh(cubeGeo, cubeMat);
-        cube.position.x = (Math.random() - 0.5) * 12;
-        cube.position.y = (Math.random() - 0.5) * 8;
-        cube.position.z = (Math.random() - 0.5) * 10 - 5;
-        scene.add(cube);
-        cubeGroup.push(cube);
-    }
-    
-    // Ground subtle grid helper (translucent)
-    const gridHelper = new THREE.GridHelper(20, 30, 0xaa88ff, 0x443366);
-    gridHelper.position.y = -2.2;
-    gridHelper.material.transparent = true;
-    gridHelper.material.opacity = 0.2;
-    scene.add(gridHelper);
-    
-    // Glow effect via simple additive sphere (large halo)
-    const glowMat = new THREE.MeshBasicMaterial({ color: 0x6b21a5, transparent: true, opacity: 0.08 });
-    const halo = new THREE.Mesh(new THREE.SphereGeometry(2.5, 32, 32), glowMat);
-    halo.position.set(0, 0, -2);
-    scene.add(halo);
-    
-    // Animation variables
-    let time = 0;
-    
-    // Mouse interaction to slightly rotate camera based on mouse (subtle 3D parallax)
-    let mouseX = 0;
-    let mouseY = 0;
-    let targetCameraX = 0;
-    let targetCameraY = 0;
-    
-    window.addEventListener('mousemove', (event) => {
-        mouseX = (event.clientX / window.innerWidth) * 2 - 1;
-        mouseY = (event.clientY / window.innerHeight) * 2 - 1;
-        targetCameraX = mouseX * 0.3;
-        targetCameraY = mouseY * 0.2;
-    });
-    
-    // --- Animation Loop ---
-    function animate() {
-        requestAnimationFrame(animate);
-        time += 0.012;
-        
-        // Rotate torus knot
-        torusKnot.rotation.x += 0.008;
-        torusKnot.rotation.y += 0.012;
-        torusKnot.rotation.z += 0.007;
-        
-        // Rotate rings
-        ring.rotation.z += 0.005;
-        ring.rotation.x = Math.PI / 2.5 + Math.sin(time * 0.5) * 0.1;
-        ring2.rotation.y += 0.003;
-        ring2.rotation.x = Math.PI / 2 + Math.sin(time * 0.7) * 0.1;
-        
-        // Floating orbs movement
-        orbGroup.forEach((orb, idx) => {
-            orb.position.x += Math.sin(time * 0.8 + idx) * 0.003;
-            orb.position.y += Math.cos(time * 0.6 + idx) * 0.003;
-            orb.position.z += Math.sin(time * 0.5 + idx) * 0.002;
-            // boundaries soft reset? not needed, just floating.
-        });
-        
-        // Rotate small cubes
-        cubeGroup.forEach((cube, i) => {
-            cube.rotation.x += 0.01;
-            cube.rotation.y += 0.015;
-            cube.rotation.z += 0.005;
-        });
-        
-        // Particle system gentle rotation
-        particleSystem.rotation.y += 0.0005;
-        particleSystem.rotation.x += 0.0003;
-        
-        // Dynamic lights color shift
-        const hue1 = (time * 0.2) % (Math.PI * 2);
-        colorLight1.intensity = 0.55 + Math.sin(time) * 0.2;
-        colorLight2.intensity = 0.5 + Math.cos(time * 1.3) * 0.2;
-        colorLight1.color.setHex(0x88aaff);
-        colorLight2.color.setHex(0xff88cc);
-        
-        // Smooth camera follow based on mouse (3D parallax effect)
-        camera.position.x += (targetCameraX - camera.position.x) * 0.05;
-        camera.position.y += (targetCameraY - camera.position.y) * 0.05;
-        camera.lookAt(0, 0.5, 0);
-        
-        renderer.render(scene, camera);
-    }
-    
-    animate();
-    
-    // Handle resize
-    window.addEventListener('resize', onWindowResize, false);
-    function onWindowResize() {
-        camera.aspect = window.innerWidth / window.innerHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-    }
-    
-    // small console log for verification
-    console.log('3D Scene Loaded | Photo: bk.png required in same directory');
-</script>
 </body>
 </html>
