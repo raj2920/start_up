@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Raj PDF Editor · Pro</title>
-  <!-- Font Awesome 6 (free) -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
-  <!-- Google Font for elegance -->
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Raj PDF · Workflow Studio</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Font: Space Grotesk + Inter -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz@14..32&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -16,470 +16,369 @@
     }
 
     body {
-      background: radial-gradient(circle at 20% 30%, #0b1929, #030811);
+      background: #f2f6fc;
+      background-image: radial-gradient(circle at 10% 20%, rgba(245, 240, 235, 0.4) 0%, #e8eef5 100%);
+      font-family: 'Inter', 'Space Grotesk', sans-serif;
+      padding: 2rem 1.2rem;
       min-height: 100vh;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 2rem 1.2rem;
-      font-family: 'Space Grotesk', sans-serif;
     }
 
-    /* glow effect */
-    .app-wrapper {
-      max-width: 1200px;
+    .app {
+      max-width: 1300px;
       width: 100%;
-      background: rgba(18, 30, 47, 0.65);
-      backdrop-filter: blur(18px) saturate(180%);
-      -webkit-backdrop-filter: blur(18px) saturate(180%);
+      background: rgba(255, 255, 255, 0.6);
+      backdrop-filter: blur(14px) saturate(180%);
+      -webkit-backdrop-filter: blur(14px) saturate(180%);
       border-radius: 56px;
-      padding: 2.2rem 2.5rem 2.8rem;
-      box-shadow: 0 30px 60px -10px rgba(0, 0, 0, 0.8), 0 0 0 1px rgba(255, 215, 150, 0.08);
-      border: 1px solid rgba(255, 215, 150, 0.12);
-      transition: 0.3s;
+      padding: 2.2rem 2.8rem 2.8rem;
+      box-shadow: 0 30px 60px -20px rgba(0, 20, 40, 0.25), 0 0 0 1px rgba(255, 255, 255, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
-    /* header with Raj signature */
-    .brand-header {
+    /* ---------- header: Raj ---------- */
+    .header-raj {
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      margin-bottom: 0.8rem;
+      gap: 16px;
+      margin-bottom: 1.6rem;
     }
 
-    .brand-left {
+    .logo-area {
       display: flex;
       align-items: center;
       gap: 14px;
     }
 
-    .brand-icon {
-      background: linear-gradient(145deg, #f7b733, #fc4a1a);
+    .logo-icon {
+      background: linear-gradient(145deg, #1e3a5f, #0f2844);
       padding: 12px 16px;
-      border-radius: 30px;
-      font-size: 1.8rem;
-      color: #fff;
-      box-shadow: 0 10px 24px -6px rgba(252, 74, 26, 0.4);
+      border-radius: 40px;
+      color: #f7c948;
+      font-size: 1.9rem;
+      box-shadow: 0 10px 20px -6px rgba(20, 50, 90, 0.3);
     }
 
-    .brand-name {
-      font-size: 2.3rem;
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
       font-weight: 700;
+      font-size: 2.2rem;
       letter-spacing: -0.02em;
-      background: linear-gradient(to right, #f9d976, #f39c6d, #e07a5f);
+      background: linear-gradient(to right, #0b2844, #1c4b75);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-      text-shadow: 0 0 20px rgba(243, 156, 109, 0.2);
     }
 
-    .brand-name small {
+    .logo-text small {
       font-weight: 400;
-      font-size: 1rem;
-      background: rgba(255, 215, 150, 0.08);
-      padding: 4px 16px;
-      border-radius: 100px;
-      color: #d6c4b0;
-      letter-spacing: 0.3px;
-      margin-left: 10px;
-      border: 1px solid rgba(255, 215, 150, 0.1);
-    }
-
-    .badge-pro {
-      background: rgba(247, 183, 51, 0.15);
-      backdrop-filter: blur(4px);
-      padding: 8px 18px;
-      border-radius: 40px;
-      color: #f7b733;
-      border: 1px solid #f7b73344;
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
-    }
-
-    .badge-pro i {
       font-size: 0.9rem;
-      color: #f7b733;
+      background: #d1dfed;
+      color: #1e3a5f;
+      padding: 2px 16px;
+      border-radius: 40px;
+      margin-left: 10px;
+      letter-spacing: 0.2px;
     }
 
-    /* subhead */
-    .subhead-glow {
+    .auth-badge {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    .auth-btn {
+      background: transparent;
+      border: 1px solid #b3cce0;
+      padding: 8px 22px;
+      border-radius: 60px;
+      font-weight: 500;
+      color: #1e3a5f;
+      transition: 0.15s;
+      cursor: default;
+      font-size: 0.9rem;
+    }
+
+    .auth-btn.sign {
+      background: #1e3a5f;
+      border: none;
+      color: white;
+      box-shadow: 0 6px 14px -6px #1e3a5f55;
+    }
+
+    /* ---------- hero ---------- */
+    .hero-section {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(4px);
+      border-radius: 40px;
+      padding: 1.8rem 2.2rem;
+      margin-bottom: 2.4rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 600;
+      color: #0b1f33;
+      letter-spacing: -0.01em;
+    }
+
+    .hero-title i {
+      color: #f7b731;
+      margin-right: 12px;
+    }
+
+    .hero-sub {
+      color: #2d4a6a;
+      font-size: 1rem;
+      margin-top: 6px;
       display: flex;
       flex-wrap: wrap;
-      gap: 18px 28px;
-      margin: 0.5rem 0 1.8rem 0;
-      padding: 0.6rem 1.4rem;
-      background: rgba(255, 215, 150, 0.02);
-      border-radius: 60px;
-      border-left: 3px solid #f7b733;
-      color: #b8ccdd;
-      font-weight: 400;
-      backdrop-filter: blur(2px);
+      gap: 14px 28px;
     }
 
-    .subhead-glow i {
-      color: #f7b733;
+    .hero-sub i {
+      color: #f7b731;
       margin-right: 6px;
     }
 
-    /* toolbar premium */
-    .toolbar-premium {
+    /* ---------- workflow tabs ---------- */
+    .workflow-tabs {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px 18px;
-      background: rgba(12, 25, 40, 0.7);
-      backdrop-filter: blur(4px);
-      padding: 0.8rem 1.5rem;
+      gap: 8px 12px;
+      margin-bottom: 2.2rem;
+      padding: 0.2rem 0;
+    }
+
+    .workflow-tab {
+      background: rgba(255, 255, 255, 0.5);
+      backdrop-filter: blur(2px);
+      padding: 8px 24px;
       border-radius: 60px;
-      margin-bottom: 2rem;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid rgba(255, 215, 150, 0.08);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.02);
-    }
-
-    .tool-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px 8px;
-    }
-
-    .tool-btn {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid transparent;
-      padding: 8px 18px;
-      border-radius: 40px;
-      color: #d4e0ed;
       font-weight: 500;
+      color: #1f3d5c;
+      border: 1px solid transparent;
+      cursor: default;
+      transition: 0.1s;
       font-size: 0.9rem;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    }
+
+    .workflow-tab.active {
+      background: #1e3a5f;
+      color: white;
+      box-shadow: 0 6px 16px -4px #1e3a5f44;
+    }
+
+    .workflow-tab i {
+      margin-right: 8px;
+    }
+
+    /* ---------- tool grid ---------- */
+    .tool-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin: 2rem 0 1.6rem;
+    }
+
+    .tool-card {
+      background: rgba(255, 255, 255, 0.55);
+      backdrop-filter: blur(6px);
+      border-radius: 32px;
+      padding: 1.8rem 1.2rem 1.8rem 1.8rem;
+      border: 1px solid rgba(255, 255, 255, 0.5);
       transition: 0.2s;
       cursor: pointer;
-      backdrop-filter: blur(2px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.01);
     }
 
-    .tool-btn i {
-      color: #f7b733;
-      font-size: 1rem;
+    .tool-card:hover {
+      background: rgba(255, 255, 255, 0.8);
+      transform: translateY(-4px);
+      border-color: #f7c94888;
+      box-shadow: 0 16px 32px -12px rgba(20, 50, 90, 0.15);
     }
 
-    .tool-btn:hover {
-      background: rgba(247, 183, 51, 0.08);
-      border-color: #f7b73355;
-      color: #ffffff;
-      transform: scale(0.97);
-    }
-
-    .tool-btn.primary-gold {
-      background: linear-gradient(145deg, #f7b733, #e07a2f);
-      color: #0b141f;
-      border: none;
-      box-shadow: 0 6px 14px -4px rgba(247, 183, 51, 0.3);
-      font-weight: 600;
-    }
-
-    .tool-btn.primary-gold i {
-      color: #0b141f;
-    }
-
-    .tool-btn.primary-gold:hover {
-      background: linear-gradient(145deg, #fcc44a, #e8843a);
-      box-shadow: 0 8px 22px -4px #f7b73355;
-    }
-
-    /* file drop zone - elegant */
-    .drop-zone-lux {
-      background: rgba(255, 255, 255, 0.02);
-      backdrop-filter: blur(4px);
-      border-radius: 40px;
-      padding: 2.6rem 1.8rem;
-      text-align: center;
-      border: 2px dashed rgba(247, 183, 51, 0.2);
-      transition: 0.25s;
-      margin-bottom: 1.8rem;
-      cursor: pointer;
-      border-image: linear-gradient(145deg, #f7b73333, #fc4a1a22) 1;
-    }
-
-    .drop-zone-lux:hover {
-      border-color: #f7b733aa;
-      background: rgba(247, 183, 51, 0.02);
-      box-shadow: 0 0 40px -12px #f7b73322;
-    }
-
-    .drop-zone-lux i {
-      font-size: 3.5rem;
-      background: linear-gradient(145deg, #f7b733, #fc4a1a);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .tool-card .icon {
+      font-size: 2.2rem;
+      color: #1e3a5f;
       margin-bottom: 8px;
     }
 
-    .drop-zone-lux p {
-      font-size: 1.25rem;
-      color: #d6e3f0;
-    }
-
-    .drop-zone-lux span {
-      color: #f7b733;
+    .tool-card h4 {
       font-weight: 600;
-      border-bottom: 1px dashed #f7b73366;
-    }
-
-    .drop-zone-lux small {
-      color: #8ca3bb;
-      display: block;
-      margin-top: 6px;
-    }
-
-    /* file card */
-    .file-card {
-      background: rgba(12, 25, 40, 0.6);
-      backdrop-filter: blur(8px);
-      border-radius: 40px;
-      padding: 0.6rem 1.2rem 0.6rem 2rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      margin: 1.5rem 0 2rem;
-      border: 1px solid rgba(247, 183, 51, 0.08);
-      box-shadow: 0 8px 20px -8px rgba(0, 0, 0, 0.5);
-    }
-
-    .file-info {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 0.6rem 0;
-    }
-
-    .file-info i {
-      font-size: 2rem;
-      color: #f7b733;
-      filter: drop-shadow(0 0 6px #f7b73344);
-    }
-
-    .file-name {
-      font-weight: 500;
-      color: #f0f4fa;
+      font-size: 1.2rem;
+      color: #0b1f33;
       letter-spacing: -0.2px;
     }
 
-    .file-size {
-      background: rgba(247, 183, 51, 0.08);
-      padding: 2px 14px;
-      border-radius: 40px;
-      color: #b8ccdd;
-      font-size: 0.8rem;
-      border: 1px solid #f7b73322;
+    .tool-card p {
+      color: #2f4b6b;
+      font-size: 0.9rem;
+      line-height: 1.4;
+      margin-top: 4px;
+      opacity: 0.9;
     }
 
-    .file-actions button {
-      background: transparent;
-      border: none;
-      color: #b0c8df;
-      padding: 6px 14px;
-      border-radius: 30px;
+    .tool-card .badge-free {
+      display: inline-block;
+      background: #e6f0e9;
+      color: #1b6b4a;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 2px 14px;
+      border-radius: 40px;
+      margin-top: 10px;
+      letter-spacing: 0.3px;
+    }
+
+    /* ---------- real world solution : file zone + action ---------- */
+    .solution-zone {
+      background: rgba(255, 255, 255, 0.3);
+      backdrop-filter: blur(6px);
+      border-radius: 40px;
+      padding: 1.8rem 2.2rem;
+      margin: 2rem 0 1.2rem;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px 30px;
+    }
+
+    .solution-left {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .solution-left .badge-solution {
+      background: #1e3a5f;
+      color: white;
+      padding: 6px 18px;
+      border-radius: 60px;
+      font-weight: 500;
+      font-size: 0.8rem;
+      letter-spacing: 0.3px;
+    }
+
+    .file-drop-mini {
+      background: white;
+      padding: 8px 24px 8px 20px;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #d4e2f0;
+      cursor: pointer;
+      transition: 0.15s;
+    }
+
+    .file-drop-mini:hover {
+      border-color: #f7b731;
+      background: #fcfaf7;
+    }
+
+    .file-drop-mini i {
+      color: #f7b731;
+      font-size: 1.2rem;
+    }
+
+    .file-drop-mini span {
+      font-weight: 450;
+      color: #1a314b;
+    }
+
+    .solution-right {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .sol-btn {
+      background: white;
+      border: 1px solid #d4e2f0;
+      padding: 12px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      color: #1a314b;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       transition: 0.15s;
       cursor: pointer;
       font-size: 0.9rem;
     }
 
-    .file-actions button:hover {
-      background: rgba(247, 183, 51, 0.05);
-      color: #f7b733;
+    .sol-btn i {
+      color: #1e3a5f;
     }
 
-    .file-actions .remove {
-      color: #d97a7a;
+    .sol-btn.primary-sol {
+      background: #1e3a5f;
+      border: none;
+      color: white;
+      box-shadow: 0 8px 18px -6px #1e3a5f66;
     }
-    .file-actions .remove:hover {
-      background: rgba(217, 122, 122, 0.08);
-      color: #ff9a9a;
+    .sol-btn.primary-sol i {
+      color: #f7c948;
     }
-
-    /* editor panel - glass */
-    .editor-glass {
-      background: rgba(12, 25, 40, 0.4);
-      backdrop-filter: blur(12px);
-      border-radius: 32px;
-      padding: 1.6rem 2rem;
-      margin: 2rem 0 1.8rem;
-      border: 1px solid rgba(255, 215, 150, 0.04);
-      box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.2);
+    .sol-btn.primary-sol:hover {
+      background: #0f2a47;
+      transform: scale(0.97);
     }
 
-    .editor-tools {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px 20px;
-      align-items: center;
+    .sol-btn.outline:hover {
+      background: #e8f0fa;
+      border-color: #b3cce0;
     }
 
-    .editor-tools .label {
-      font-weight: 500;
-      color: #d6e3f0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .editor-tools select {
-      background: rgba(0, 0, 0, 0.3);
-      border: 1px solid #f7b73333;
-      border-radius: 40px;
-      padding: 8px 18px;
-      color: #eef4fa;
-      font-weight: 400;
-      cursor: pointer;
-      backdrop-filter: blur(4px);
-    }
-
-    .editor-tools input[type="range"] {
-      width: 130px;
-      accent-color: #f7b733;
-      background: #1e3349;
-      height: 4px;
-      border-radius: 10px;
-    }
-
-    .editor-tools input[type="range"]::-webkit-slider-thumb {
-      background: #f7b733;
-      box-shadow: 0 0 12px #f7b73366;
-    }
-
-    .editor-tools button {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid transparent;
-      padding: 8px 16px;
-      border-radius: 40px;
-      color: #d4e0ed;
-      transition: 0.15s;
-      cursor: pointer;
-    }
-
-    .editor-tools button:hover {
-      background: rgba(247, 183, 51, 0.06);
-      border-color: #f7b73344;
-    }
-
-    .preview-box {
-      margin-top: 18px;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 28px;
-      padding: 1.2rem 1.8rem;
-      border-left: 4px solid #f7b733;
-      color: #d6e3f0;
-      font-size: 0.95rem;
-      backdrop-filter: blur(2px);
-      transition: 0.2s;
-      min-height: 70px;
-      display: flex;
-      align-items: center;
-    }
-
-    .preview-box i {
-      color: #f7b733;
-      margin-right: 10px;
-    }
-
-    /* action bar */
-    .action-bar-premium {
+    /* status */
+    .status-bar {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
       align-items: center;
-      gap: 18px 22px;
       margin-top: 1.8rem;
+      padding: 0.2rem 0.2rem 0.2rem 0;
     }
 
-    .status-badge-glow {
-      background: rgba(247, 183, 51, 0.04);
-      backdrop-filter: blur(4px);
-      padding: 8px 26px;
+    .status-chip {
+      background: rgba(255, 255, 255, 0.4);
+      padding: 8px 24px;
       border-radius: 60px;
       font-size: 0.9rem;
-      color: #c8dcec;
-      border: 1px solid rgba(247, 183, 51, 0.08);
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
+      color: #1e3a5f;
+      backdrop-filter: blur(2px);
     }
 
-    .status-badge-glow i {
-      color: #6fcf97;
-    }
-
-    .action-btn-gold {
-      padding: 14px 32px;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 1rem;
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(255, 215, 150, 0.06);
-      color: #d6e3f0;
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      cursor: pointer;
-      transition: 0.2s;
-      backdrop-filter: blur(4px);
-    }
-
-    .action-btn-gold i {
-      color: #f7b733;
-    }
-
-    .action-btn-gold.convert-gold {
-      background: linear-gradient(145deg, #f7b733, #e07a2f);
-      border: none;
-      color: #0b141f;
-      box-shadow: 0 10px 24px -6px #f7b73344;
-    }
-
-    .action-btn-gold.convert-gold i {
-      color: #0b141f;
-    }
-
-    .action-btn-gold.convert-gold:hover {
-      background: linear-gradient(145deg, #fcc44a, #e8843a);
-      transform: scale(0.97);
-    }
-
-    .action-btn-gold.word-btn {
-      background: rgba(44, 130, 200, 0.08);
-      border: 1px solid #2b7ec044;
-    }
-    .action-btn-gold.word-btn i {
-      color: #5b9bd5;
-    }
-
-    .action-btn-gold.word-btn:hover {
-      background: rgba(44, 130, 200, 0.15);
+    .status-chip i {
+      color: #2b7a4b;
+      margin-right: 8px;
     }
 
     .footer-credit {
       margin-top: 2.8rem;
-      border-top: 1px solid rgba(255, 215, 150, 0.04);
-      padding-top: 1.8rem;
+      border-top: 1px solid rgba(0,0,0,0.02);
+      padding-top: 1.6rem;
       display: flex;
       justify-content: center;
-      gap: 32px;
+      gap: 30px;
       flex-wrap: wrap;
-      color: #6e8aaa;
+      color: #4a6a89;
       font-size: 0.85rem;
     }
 
     .footer-credit i {
-      color: #f7b73366;
+      color: #f7b731;
       margin-right: 6px;
     }
 
@@ -487,107 +386,119 @@
       display: none;
     }
 
-    @media (max-width: 750px) {
-      .app-wrapper { padding: 1.8rem; }
-      .brand-name { font-size: 1.8rem; }
-      .brand-name small { display: block; margin-left: 0; margin-top: 4px; }
+    /* mobile */
+    @media (max-width: 700px) {
+      .app { padding: 1.5rem; }
+      .logo-text { font-size: 1.6rem; }
+      .hero-title { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-<div class="app-wrapper">
+<div class="app">
 
-  <!-- HEADER with RAJ -->
-  <div class="brand-header">
-    <div class="brand-left">
-      <div class="brand-icon"><i class="fas fa-crown"></i></div>
-      <div class="brand-name">
-        Raj PDF <small>editor · pro</small>
+  <!-- header with Raj -->
+  <div class="header-raj">
+    <div class="logo-area">
+      <div class="logo-icon"><i class="fas fa-crown"></i></div>
+      <div class="logo-text">
+        Raj PDF <small>workflow</small>
       </div>
     </div>
-    <div class="badge-pro">
-      <i class="fas fa-star"></i> premium · v3.0
+    <div class="auth-badge">
+      <span class="auth-btn"><i class="far fa-user-circle"></i> Login</span>
+      <span class="auth-btn sign">Sign up</span>
     </div>
   </div>
 
-  <div class="subhead-glow">
-    <span><i class="fas fa-pen-fancy"></i> full editor</span>
-    <span><i class="fas fa-arrows-left-right"></i> Word ↔ PDF</span>
-    <span><i class="fas fa-cloud-upload-alt"></i> drag & drop</span>
-    <span><i class="fas fa-bolt"></i> lightning convert</span>
-  </div>
-
-  <!-- toolbar -->
-  <div class="toolbar-premium">
-    <div class="tool-group">
-      <button class="tool-btn" id="newFileBtn"><i class="fas fa-file-upload"></i> Upload</button>
-      <button class="tool-btn" id="clearAllBtn"><i class="fas fa-trash-alt"></i> Clear</button>
+  <!-- hero -->
+  <div class="hero-section">
+    <div class="hero-title">
+      <i class="fas fa-bolt"></i> Every tool you need to work with PDFs in one place
     </div>
-    <div class="tool-group">
-      <button class="tool-btn primary-gold" id="savePdfBtn"><i class="fas fa-save"></i> Save PDF</button>
-      <button class="tool-btn primary-gold" id="convertWordBtn"><i class="fas fa-file-word"></i> Word</button>
+    <div class="hero-sub">
+      <span><i class="fas fa-check-circle"></i> 100% FREE</span>
+      <span><i class="fas fa-merge"></i> Merge · Split · Compress</span>
+      <span><i class="fas fa-rotate"></i> Convert · Edit · Secure</span>
+      <span><i class="fas fa-shield-alt"></i> PDF Intelligence</span>
     </div>
   </div>
 
-  <!-- drop zone -->
-  <div class="drop-zone-lux" id="dropZone">
-    <i class="fas fa-cloud-upload-alt"></i>
-    <p><span>click to browse</span> or drag & drop PDF / Word</p>
-    <small><i class="fas fa-check-circle" style="color:#6fcf97;"></i> supports .pdf, .docx, .doc, .txt</small>
+  <!-- workflow tabs (reference) -->
+  <div class="workflow-tabs">
+    <span class="workflow-tab active"><i class="fas fa-th-large"></i> All</span>
+    <span class="workflow-tab"><i class="fas fa-folder-open"></i> Organize PDF</span>
+    <span class="workflow-tab"><i class="fas fa-compress-arrows-alt"></i> Optimize PDF</span>
+    <span class="workflow-tab"><i class="fas fa-exchange-alt"></i> Convert PDF</span>
+    <span class="workflow-tab"><i class="fas fa-pen"></i> Edit PDF</span>
+    <span class="workflow-tab"><i class="fas fa-lock"></i> PDF Security</span>
   </div>
 
-  <!-- file card -->
-  <div class="file-card" id="fileList">
-    <div class="file-info">
-      <i class="fas fa-file-pdf"></i>
-      <span class="file-name" id="fileNameDisplay">no file loaded</span>
-      <span class="file-size" id="fileSizeDisplay">—</span>
+  <!-- tool grid : 4 core tools (reference) -->
+  <div class="tool-grid">
+    <div class="tool-card" id="mergeTool">
+      <div class="icon"><i class="fas fa-object-group"></i></div>
+      <h4>Merge PDF</h4>
+      <p>Combine PDFs in the order you want — easiest merger.</p>
+      <span class="badge-free"><i class="fas fa-star"></i> free</span>
     </div>
-    <div class="file-actions">
-      <button id="removeFileBtn" class="remove"><i class="fas fa-times-circle"></i> remove</button>
+    <div class="tool-card" id="splitTool">
+      <div class="icon"><i class="fas fa-cut"></i></div>
+      <h4>Split PDF</h4>
+      <p>Separate pages or whole sets into independent PDFs.</p>
+      <span class="badge-free"><i class="fas fa-star"></i> free</span>
     </div>
-  </div>
-
-  <!-- editor glass -->
-  <div class="editor-glass">
-    <div class="editor-tools">
-      <span class="label"><i class="fas fa-edit" style="color:#f7b733;"></i> Editor</span>
-      <select id="fontSelect">
-        <option value="Space Grotesk">Space Grotesk</option>
-        <option value="Inter">Inter</option>
-        <option value="Georgia">Georgia</option>
-        <option value="monospace">Monospace</option>
-      </select>
-      <input type="range" min="8" max="32" value="16" id="fontSizeRange" />
-      <span id="fontSizeLabel" style="color:#d6e3f0; min-width: 40px;">16px</span>
-      <button id="boldBtn"><i class="fas fa-bold"></i></button>
-      <button id="italicBtn"><i class="fas fa-italic"></i></button>
-      <button id="underlineBtn"><i class="fas fa-underline"></i></button>
-      <span style="margin-left: auto; color:#8ca3bb; font-size:0.8rem;"><i class="fas fa-magic" style="color:#f7b733;"></i> live</span>
+    <div class="tool-card" id="compressTool">
+      <div class="icon"><i class="fas fa-compress-alt"></i></div>
+      <h4>Compress PDF</h4>
+      <p>Reduce file size while keeping max quality.</p>
+      <span class="badge-free"><i class="fas fa-star"></i> free</span>
     </div>
-    <div class="preview-box" id="previewText">
-      <i class="fas fa-file-alt"></i> 
-      <span id="previewContent">Upload a PDF or Word document to start editing.</span>
+    <div class="tool-card" id="wordTool">
+      <div class="icon"><i class="fas fa-file-word"></i></div>
+      <h4>PDF to Word</h4>
+      <p>Convert to DOC / DOCX with 100% accuracy.</p>
+      <span class="badge-free"><i class="fas fa-star"></i> free</span>
     </div>
   </div>
 
-  <!-- action bar -->
-  <div class="action-bar-premium">
-    <div class="status-badge-glow" id="statusBadge">
-      <i class="fas fa-check-circle"></i> ready
+  <!-- REAL WORLD SOLUTION : file drop + convert / merge / split demo -->
+  <div class="solution-zone">
+    <div class="solution-left">
+      <span class="badge-solution"><i class="fas fa-rocket"></i> real‑world solution</span>
+      <div class="file-drop-mini" id="dropMini">
+        <i class="fas fa-cloud-upload-alt"></i>
+        <span id="fileLabel">upload PDF or Word</span>
+        <i class="fas fa-chevron-down" style="font-size:0.7rem; opacity:0.5;"></i>
+      </div>
+      <span style="font-size:0.8rem; color:#3b5a7a;" id="fileSizeLabel">—</span>
     </div>
-    <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-      <button class="action-btn-gold" id="resetEditorBtn"><i class="fas fa-undo-alt"></i> Reset</button>
-      <button class="action-btn-gold convert-gold" id="convertToPdfBtn"><i class="fas fa-file-pdf"></i> PDF</button>
-      <button class="action-btn-gold word-btn" id="convertToWordAction"><i class="fas fa-file-word"></i> Word</button>
+    <div class="solution-right">
+      <button class="sol-btn outline" id="clearFileBtn"><i class="fas fa-trash-alt"></i> clear</button>
+      <button class="sol-btn primary-sol" id="convertWordBtn"><i class="fas fa-file-word"></i> to Word</button>
+      <button class="sol-btn primary-sol" id="mergePdfBtn"><i class="fas fa-object-group"></i> merge</button>
+      <button class="sol-btn primary-sol" id="splitPdfBtn"><i class="fas fa-cut"></i> split</button>
     </div>
   </div>
 
+  <!-- status -->
+  <div class="status-bar">
+    <div class="status-chip" id="statusChip">
+      <i class="fas fa-check-circle"></i> ready · upload a file
+    </div>
+    <div style="display:flex; gap:10px;">
+      <span style="background:white; padding:6px 18px; border-radius:60px; font-size:0.8rem; color:#1e3a5f; border:1px solid #d4e2f0;">
+        <i class="fas fa-history"></i> 0 conversions
+      </span>
+    </div>
+  </div>
+
+  <!-- footer -->
   <div class="footer-credit">
-    <span><i class="fas fa-crown"></i> Raj PDF · all facilities</span>
-    <span><i class="fas fa-rotate"></i> bidirectional conversion</span>
-    <span><i class="fas fa-shield-alt"></i> client-side</span>
+    <span><i class="fas fa-crown"></i> Raj PDF · all tools in one</span>
+    <span><i class="fas fa-arrows-left-right"></i> Merge · Split · Compress · Convert</span>
+    <span><i class="fas fa-laptop"></i> 100% client side</span>
   </div>
 </div>
 
@@ -596,54 +507,41 @@
 
 <script>
   (function() {
-    // ---------- state ----------
+    const fileInput = document.getElementById('fileInput');
+    const dropMini = document.getElementById('dropMini');
+    const fileLabel = document.getElementById('fileLabel');
+    const fileSizeLabel = document.getElementById('fileSizeLabel');
+    const statusChip = document.getElementById('statusChip');
+    const clearFileBtn = document.getElementById('clearFileBtn');
+
+    // action buttons
+    const convertWordBtn = document.getElementById('convertWordBtn');
+    const mergePdfBtn = document.getElementById('mergePdfBtn');
+    const splitPdfBtn = document.getElementById('splitPdfBtn');
+
+    // tool cards (demo)
+    const mergeTool = document.getElementById('mergeTool');
+    const splitTool = document.getElementById('splitTool');
+    const compressTool = document.getElementById('compressTool');
+    const wordTool = document.getElementById('wordTool');
+
     let currentFile = null;
     let currentFileURL = null;
-    let fileContent = '';
 
-    // DOM
-    const fileInput = document.getElementById('fileInput');
-    const dropZone = document.getElementById('dropZone');
-    const fileNameDisplay = document.getElementById('fileNameDisplay');
-    const fileSizeDisplay = document.getElementById('fileSizeDisplay');
-    const removeFileBtn = document.getElementById('removeFileBtn');
-    const clearAllBtn = document.getElementById('clearAllBtn');
-    const newFileBtn = document.getElementById('newFileBtn');
-    const previewContent = document.getElementById('previewContent');
-    const statusBadge = document.getElementById('statusBadge');
-
-    // editor controls
-    const fontSelect = document.getElementById('fontSelect');
-    const fontSizeRange = document.getElementById('fontSizeRange');
-    const fontSizeLabel = document.getElementById('fontSizeLabel');
-    const boldBtn = document.getElementById('boldBtn');
-    const italicBtn = document.getElementById('italicBtn');
-    const underlineBtn = document.getElementById('underlineBtn');
-    const resetEditorBtn = document.getElementById('resetEditorBtn');
-
-    // conversion buttons
-    const convertToPdfBtn = document.getElementById('convertToPdfBtn');
-    const convertToWordAction = document.getElementById('convertToWordAction');
-    const savePdfBtn = document.getElementById('savePdfBtn');
-    const convertWordBtn = document.getElementById('convertWordBtn');
-
-    // helper
     function setStatus(text, isGood = true) {
-      statusBadge.innerHTML = `<i class="fas ${isGood ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${text}`;
-      statusBadge.style.color = isGood ? '#c8dcec' : '#f4a0a0';
+      statusChip.innerHTML = `<i class="fas ${isGood ? 'fa-check-circle' : 'fa-exclamation-circle'}"></i> ${text}`;
+      statusChip.style.color = isGood ? '#1e3a5f' : '#b13e3e';
     }
 
     function updateFileUI(file) {
       if (file) {
-        fileNameDisplay.textContent = file.name;
-        fileSizeDisplay.textContent = (file.size / 1024).toFixed(1) + ' KB';
-        previewContent.textContent = `${file.name}  ·  ${(file.size/1024).toFixed(1)} KB  ·  ready for edit & convert`;
+        fileLabel.textContent = file.name;
+        fileSizeLabel.textContent = (file.size / 1024).toFixed(1) + ' KB';
         setStatus(`loaded: ${file.name}`, true);
       } else {
-        fileNameDisplay.textContent = 'no file loaded';
-        fileSizeDisplay.textContent = '—';
-        previewContent.textContent = 'Upload a PDF or Word document to start editing.';
-        setStatus('ready', true);
+        fileLabel.textContent = 'upload PDF or Word';
+        fileSizeLabel.textContent = '—';
+        setStatus('ready · upload a file', true);
       }
     }
 
@@ -657,128 +555,67 @@
       currentFile = file;
       if (currentFileURL) URL.revokeObjectURL(currentFileURL);
       currentFileURL = URL.createObjectURL(file);
-      fileContent = `[${file.name}]  —  edit me.  (${(file.size/1024).toFixed(1)} KB)`;
       updateFileUI(file);
-      previewContent.textContent = fileContent;
-      setStatus(`loaded: ${file.name}`, true);
     }
 
     function clearFile() {
       if (currentFileURL) URL.revokeObjectURL(currentFileURL);
       currentFile = null;
       currentFileURL = null;
-      fileContent = '';
       updateFileUI(null);
-      previewContent.textContent = 'Upload a PDF or Word document to start editing.';
       setStatus('cleared', true);
     }
 
-    // event listeners
-    dropZone.addEventListener('click', () => fileInput.click());
-
-    dropZone.addEventListener('dragover', (e) => {
-      e.preventDefault();
-      dropZone.style.borderColor = '#f7b733aa';
-      dropZone.style.background = 'rgba(247, 183, 51, 0.02)';
-    });
-
-    dropZone.addEventListener('dragleave', () => {
-      dropZone.style.borderColor = 'rgba(247, 183, 51, 0.2)';
-      dropZone.style.background = 'rgba(255, 255, 255, 0.02)';
-    });
-
-    dropZone.addEventListener('drop', (e) => {
-      e.preventDefault();
-      dropZone.style.borderColor = 'rgba(247, 183, 51, 0.2)';
-      dropZone.style.background = 'rgba(255, 255, 255, 0.02)';
-      if (e.dataTransfer.files.length > 0) loadFile(e.dataTransfer.files[0]);
-    });
+    // ---- event listeners ----
+    dropMini.addEventListener('click', () => fileInput.click());
 
     fileInput.addEventListener('change', (e) => {
       if (fileInput.files.length > 0) loadFile(fileInput.files[0]);
       fileInput.value = '';
     });
 
-    newFileBtn.addEventListener('click', () => fileInput.click());
-    removeFileBtn.addEventListener('click', clearFile);
-    clearAllBtn.addEventListener('click', clearFile);
+    clearFileBtn.addEventListener('click', clearFile);
 
-    // editor styling
-    function applyStyle() {
-      const font = fontSelect.value;
-      const size = fontSizeRange.value + 'px';
-      previewContent.style.fontFamily = font;
-      previewContent.style.fontSize = size;
-      fontSizeLabel.textContent = size;
-    }
-
-    fontSelect.addEventListener('change', applyStyle);
-    fontSizeRange.addEventListener('input', applyStyle);
-
-    let bold = false, italic = false, underline = false;
-    boldBtn.addEventListener('click', () => {
-      bold = !bold;
-      previewContent.style.fontWeight = bold ? '700' : '400';
-      boldBtn.style.background = bold ? 'rgba(247,183,51,0.1)' : 'transparent';
+    // drag and drop on solution zone (extra)
+    const solutionZone = document.querySelector('.solution-zone');
+    solutionZone.addEventListener('dragover', (e) => {
+      e.preventDefault();
+      solutionZone.style.borderColor = '#f7b731';
+      solutionZone.style.background = 'rgba(247, 183, 49, 0.04)';
     });
-    italicBtn.addEventListener('click', () => {
-      italic = !italic;
-      previewContent.style.fontStyle = italic ? 'italic' : 'normal';
-      italicBtn.style.background = italic ? 'rgba(247,183,51,0.1)' : 'transparent';
+    solutionZone.addEventListener('dragleave', () => {
+      solutionZone.style.borderColor = 'rgba(255,255,255,0.3)';
+      solutionZone.style.background = 'rgba(255,255,255,0.3)';
     });
-    underlineBtn.addEventListener('click', () => {
-      underline = !underline;
-      previewContent.style.textDecoration = underline ? 'underline' : 'none';
-      underlineBtn.style.background = underline ? 'rgba(247,183,51,0.1)' : 'transparent';
+    solutionZone.addEventListener('drop', (e) => {
+      e.preventDefault();
+      solutionZone.style.borderColor = 'rgba(255,255,255,0.3)';
+      solutionZone.style.background = 'rgba(255,255,255,0.3)';
+      if (e.dataTransfer.files.length > 0) loadFile(e.dataTransfer.files[0]);
     });
 
-    resetEditorBtn.addEventListener('click', () => {
-      fontSelect.value = 'Space Grotesk';
-      fontSizeRange.value = '16';
-      fontSizeLabel.textContent = '16px';
-      previewContent.style.fontFamily = 'Space Grotesk';
-      previewContent.style.fontSize = '16px';
-      previewContent.style.fontWeight = '400';
-      previewContent.style.fontStyle = 'normal';
-      previewContent.style.textDecoration = 'none';
-      bold = false; italic = false; underline = false;
-      boldBtn.style.background = 'transparent';
-      italicBtn.style.background = 'transparent';
-      underlineBtn.style.background = 'transparent';
-      if (currentFile) {
-        previewContent.textContent = fileContent || 'reset';
-      } else {
-        previewContent.textContent = 'Upload a PDF or Word document to start editing.';
-      }
-      setStatus('reset editor', true);
-    });
-
-    // conversion mocks
-    function showConversion(from, to) {
+    // ---- action mocks (real-world solution) ----
+    function performAction(actionName) {
       if (!currentFile) {
-        setStatus('Please load a file first', false);
+        setStatus('please upload a file first', false);
         return;
       }
-      setStatus(`converting ${from} → ${to} ...`, true);
-      previewContent.textContent = `🔄 Converting ${from} → ${to} ... (file: ${currentFile.name})`;
+      setStatus(`${actionName} … processing ${currentFile.name}`, true);
+      // simulate
       setTimeout(() => {
-        previewContent.textContent = `✅ Done! ${from} → ${to} conversion ready (demo).`;
-        setStatus(`converted to ${to}`, true);
-      }, 1200);
+        setStatus(`${actionName} completed · ${currentFile.name} (demo)`, true);
+      }, 1000);
     }
 
-    convertToPdfBtn.addEventListener('click', () => showConversion('Word', 'PDF'));
-    convertToWordAction.addEventListener('click', () => showConversion('PDF', 'Word'));
-    savePdfBtn.addEventListener('click', () => {
-      if (!currentFile) { setStatus('no file to save', false); return; }
-      setStatus('saving as PDF (demo)', true);
-      previewContent.textContent = `📄 PDF saved as "${currentFile.name.split('.')[0]}.pdf" (demo)`;
-    });
-    convertWordBtn.addEventListener('click', () => {
-      if (!currentFile) { setStatus('no file to convert', false); return; }
-      setStatus('converting to Word (demo)', true);
-      previewContent.textContent = `📝 Word document ready: "${currentFile.name.split('.')[0]}.docx" (demo)`;
-    });
+    convertWordBtn.addEventListener('click', () => performAction('Convert to Word'));
+    mergePdfBtn.addEventListener('click', () => performAction('Merge'));
+    splitPdfBtn.addEventListener('click', () => performAction('Split'));
+
+    // tool card clicks (demo)
+    mergeTool.addEventListener('click', () => performAction('Merge (tool)'));
+    splitTool.addEventListener('click', () => performAction('Split (tool)'));
+    compressTool.addEventListener('click', () => performAction('Compress'));
+    wordTool.addEventListener('click', () => performAction('PDF to Word'));
 
     // init
     updateFileUI(null);
